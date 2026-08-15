@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Download, Shield, Terminal, BookOpen, Layers, X, ArrowRight } from 'lucide-react';
-import { APP_NAME } from '../data/releaseData';
+import { APP_NAME, DIRECT_EXE_DOWNLOAD_URL, GITHUB_RELEASE_URL } from '../data/releaseData';
 
 export default function CommandPalette({ isOpen, onClose }) {
   const [query, setQuery] = useState('');
@@ -22,8 +22,8 @@ export default function CommandPalette({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   const quickActions = [
-    { title: "Download Desktop Wellbeing (.exe)", category: "Download", href: "#download", icon: Download },
-    { title: "Install via winget CLI", category: "CLI", href: "#download", icon: Terminal },
+    { title: "Download Desktop Wellbeing (.exe Setup)", category: "Download", href: DIRECT_EXE_DOWNLOAD_URL, icon: Download, download: "Desktop.Wellbeing.Setup.1.0.0.exe" },
+    { title: "GitHub Release v1 & Assets", category: "GitHub", href: GITHUB_RELEASE_URL, icon: Terminal, external: true },
     { title: "Explore Features & Limits", category: "Features", href: "#features", icon: Shield },
     { title: "Try Live Focus Simulator", category: "Live Demo", href: "#demo", icon: Layers },
     { title: "Frequently Asked Questions", category: "Help & FAQ", href: "#faq", icon: BookOpen }
@@ -67,6 +67,9 @@ export default function CommandPalette({ isOpen, onClose }) {
                 <a 
                   key={idx}
                   href={action.href}
+                  download={action.download}
+                  target={action.external ? "_blank" : undefined}
+                  rel={action.external ? "noopener noreferrer" : undefined}
                   onClick={onClose}
                   className="p-3 rounded-lg flex items-center justify-between text-slate-300 hover:text-white hover:bg-blue-600/10 transition-colors group cursor-pointer"
                 >

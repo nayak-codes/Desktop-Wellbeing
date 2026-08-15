@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Download, Play, Pause, Check, Copy, Shield, Sparkles, Clock, Lock, ArrowRight } from 'lucide-react';
-import { APP_NAME, RELEASE_VERSION, CLI_INSTALL_COMMAND } from '../data/releaseData';
+import { APP_NAME, RELEASE_VERSION, CLI_INSTALL_COMMAND, DIRECT_EXE_DOWNLOAD_URL } from '../data/releaseData';
 
 export default function Hero({ onToast }) {
   const [copied, setCopied] = useState(false);
@@ -20,7 +20,7 @@ export default function Hero({ onToast }) {
   const handleCopyCmd = () => {
     navigator.clipboard.writeText(CLI_INSTALL_COMMAND);
     setCopied(true);
-    if (onToast) onToast("CLI install command copied!", "copy");
+    if (onToast) onToast("Download command copied!", "copy");
     setTimeout(() => setCopied(false), 2000);
   };
 
@@ -41,7 +41,7 @@ export default function Hero({ onToast }) {
           <img src="/logo.png" alt="Logo" className="w-4 h-4 rounded object-cover" />
           <span>Desktop Wellbeing for Windows {RELEASE_VERSION}</span>
           <span className="text-slate-400">•</span>
-          <span className="text-slate-300">Track • Focus • Improve</span>
+          <span className="text-slate-300">Official v1 Release</span>
         </div>
 
         {/* Headline */}
@@ -56,13 +56,17 @@ export default function Hero({ onToast }) {
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
+        <div className="flex flex-wrap items-center justify-center gap-4 mb-3">
           <a 
-            href="#download"
-            className="btn btn-primary btn-lg flex items-center gap-2.5 shadow-lg shadow-blue-500/25"
+            href={DIRECT_EXE_DOWNLOAD_URL}
+            download="Desktop.Wellbeing.Setup.1.0.0.exe"
+            onClick={() => {
+              if (onToast) onToast("Starting download for Desktop.Wellbeing.Setup.1.0.0.exe...", "success");
+            }}
+            className="btn btn-primary btn-lg flex items-center gap-2.5 shadow-lg shadow-blue-500/25 cursor-pointer"
           >
             <Download className="w-5 h-5" />
-            <span>Download for Windows</span>
+            <span>Download for Windows (.exe)</span>
           </a>
 
           <a 
@@ -71,6 +75,17 @@ export default function Hero({ onToast }) {
           >
             <Play className="w-4 h-4 text-blue-400 fill-blue-400" />
             <span>Try Live Demo</span>
+          </a>
+        </div>
+
+        {/* Release subtext */}
+        <div className="flex items-center justify-center gap-3 text-xs text-slate-400 mb-6 font-mono">
+          <span>v1.0.0 (158 MB)</span>
+          <span>•</span>
+          <span>Windows 10 & 11 (64-bit)</span>
+          <span>•</span>
+          <a href="#download" className="text-blue-400 hover:text-blue-300 underline underline-offset-4">
+            More Options
           </a>
         </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Shield, Sparkles, Download, CheckCircle2, ArrowRight } from 'lucide-react';
-import { APP_NAME, RELEASE_VERSION } from '../data/releaseData';
+import { APP_NAME, RELEASE_VERSION, DIRECT_EXE_DOWNLOAD_URL } from '../data/releaseData';
 
 export default function AboutManifesto({ onToast }) {
   return (
@@ -45,8 +45,12 @@ export default function AboutManifesto({ onToast }) {
           {/* Action Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a 
-              href="#download" 
-              className="btn btn-primary btn-lg flex items-center gap-2.5 shadow-xl shadow-blue-500/25"
+              href={DIRECT_EXE_DOWNLOAD_URL}
+              download="Desktop.Wellbeing.Setup.1.0.0.exe"
+              onClick={() => {
+                if (onToast) onToast("Starting download for Desktop.Wellbeing.Setup.1.0.0.exe...", "success");
+              }}
+              className="btn btn-primary btn-lg flex items-center gap-2.5 shadow-xl shadow-blue-500/25 cursor-pointer"
             >
               <Download className="w-5 h-5" />
               <span>Download Desktop Wellbeing ({RELEASE_VERSION})</span>

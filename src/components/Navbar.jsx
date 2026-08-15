@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Download, Search, Menu, X } from 'lucide-react';
-import { APP_NAME, RELEASE_VERSION } from '../data/releaseData';
+import { APP_NAME, RELEASE_VERSION, DIRECT_EXE_DOWNLOAD_URL } from '../data/releaseData';
 
-export default function Navbar({ onOpenSearch }) {
+export default function Navbar({ onOpenSearch, onToast }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleDownloadClick = () => {
+    if (onToast) onToast("Starting download for Desktop.Wellbeing.Setup.1.0.0.exe...", "success");
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#090d16]/90 backdrop-blur-md border-b border-white/10">
@@ -73,8 +77,10 @@ export default function Navbar({ onOpenSearch }) {
 
           {/* Primary CTA */}
           <a 
-            href="#download"
-            className="btn btn-primary btn-sm flex items-center gap-1.5 text-xs font-semibold"
+            href={DIRECT_EXE_DOWNLOAD_URL}
+            download="Desktop.Wellbeing.Setup.1.0.0.exe"
+            onClick={handleDownloadClick}
+            className="btn btn-primary btn-sm flex items-center gap-1.5 text-xs font-semibold cursor-pointer"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Download Free</span>
@@ -83,7 +89,7 @@ export default function Navbar({ onOpenSearch }) {
           {/* Mobile Menu Button */}
           <button 
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-slate-400 hover:text-white bg-white/5 rounded-lg border border-white/10"
+            className="md:hidden p-2 text-slate-400 hover:text-white bg-white/5 rounded-lg border border-white/10 cursor-pointer"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -96,8 +102,17 @@ export default function Navbar({ onOpenSearch }) {
           <a href="#features" onClick={() => setMobileOpen(false)} className="text-sm font-medium text-slate-200 py-1.5">Features</a>
           <a href="#demo" onClick={() => setMobileOpen(false)} className="text-sm font-medium text-slate-200 py-1.5">Live Demo</a>
           <a href="#how-it-works" onClick={() => setMobileOpen(false)} className="text-sm font-medium text-slate-200 py-1.5">How It Works</a>
-          <a href="#download" onClick={() => setMobileOpen(false)} className="text-sm font-medium text-slate-200 py-1.5">Download</a>
+          <a href="#download" onClick={() => setMobileOpen(false)} className="text-sm font-medium text-slate-200 py-1.5">Download Matrix</a>
           <a href="#faq" onClick={() => setMobileOpen(false)} className="text-sm font-medium text-slate-200 py-1.5">FAQ</a>
+          <a 
+            href={DIRECT_EXE_DOWNLOAD_URL} 
+            download="Desktop.Wellbeing.Setup.1.0.0.exe"
+            onClick={() => { setMobileOpen(false); handleDownloadClick(); }} 
+            className="btn btn-primary btn-sm flex items-center justify-center gap-2 mt-2"
+          >
+            <Download className="w-4 h-4" />
+            <span>Download .exe (v1.0.0)</span>
+          </a>
         </div>
       )}
     </header>

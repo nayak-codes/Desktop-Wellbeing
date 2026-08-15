@@ -47,7 +47,7 @@ export default function App() {
       </div>
 
       {/* Navigation Header */}
-      <Navbar onOpenSearch={() => setIsSearchOpen(true)} />
+      <Navbar onOpenSearch={() => setIsSearchOpen(true)} onToast={addToast} />
 
       {/* Main Content Sections */}
       <main id="main-content">
@@ -57,7 +57,7 @@ export default function App() {
         <HowItWorks />
         <DownloadMatrix onToast={addToast} />
         <Documentation />
-        <AboutManifesto />
+        <AboutManifesto onToast={addToast} />
       </main>
 
       {/* Footer */}
