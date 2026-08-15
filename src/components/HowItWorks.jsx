@@ -1,13 +1,14 @@
 import React from 'react';
 import { Download, Sliders, CheckCircle2, Zap, ArrowRight, ShieldCheck } from 'lucide-react';
+import { WindowsModernIcon } from './Icons';
 
 export default function HowItWorks() {
   const steps = [
     {
       num: "01",
-      title: "One-Click Native Setup",
+      title: "One-Click Windows Setup",
       subtitle: "Instant 15-Second Install",
-      desc: "Install via direct .exe or `winget`. The lightweight engine registers seamlessly to your Windows System Tray with zero background lag.",
+      desc: "Install via direct .exe installer or `winget`. The lightweight engine registers seamlessly to your Windows System Tray with zero background lag.",
       badge: "Zero Configuration",
       icon: Download
     },

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Download, Check, Copy, Terminal, Shield, HelpCircle, CheckCircle2, Lock, ExternalLink } from 'lucide-react';
 import { DOWNLOAD_OPTIONS, CLI_COMMANDS, RELEASE_VERSION, GITHUB_RELEASE_URL } from '../data/releaseData';
+import { WindowsModernIcon } from './Icons';
 
 export default function DownloadMatrix({ onToast }) {
   const [activeCliTab, setActiveCliTab] = useState('powershell');
@@ -27,17 +28,20 @@ export default function DownloadMatrix({ onToast }) {
   };
 
   return (
-    <section id="download" className="section-padding bg-[#090d16] border-t border-white/10 relative">
+    <section id="download" className="section-padding bg-[#070b14] border-t border-white/10 relative">
       <div className="container mx-auto px-6">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="section-badge">Official GitHub Release Hub</div>
+          <div className="section-badge">
+            <WindowsModernIcon className="w-3.5 h-3.5 text-[#0078D4]" />
+            <span>Official Windows Release Hub</span>
+          </div>
           <h2 className="section-title">
             Download <span className="text-gradient">Desktop Wellbeing</span>
           </h2>
           <p className="section-subtitle">
-            Get the native binary for Windows. Free, open-source under MIT, and zero cloud telemetry.
+            Get the native 64-bit binary for Windows 10 & 11. Free, open-source under MIT, and 100% local privacy.
           </p>
         </div>
 
@@ -49,21 +53,27 @@ export default function DownloadMatrix({ onToast }) {
               <div 
                 key={opt.id}
                 className={`app-card p-7 flex flex-col justify-between ${
-                  opt.isPrimary ? 'border-blue-500/50 bg-blue-600/[0.04] shadow-xl shadow-blue-500/10 ring-1 ring-blue-500/20' : ''
+                  opt.isPrimary 
+                    ? 'border-blue-500/60 bg-blue-600/[0.06] shadow-2xl shadow-blue-500/15 ring-1 ring-blue-500/30' 
+                    : ''
                 }`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase ${
-                      opt.isPrimary ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' : 'bg-white/5 text-slate-400 border border-white/10'
+                    <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase flex items-center gap-1.5 ${
+                      opt.isPrimary 
+                        ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' 
+                        : 'bg-white/5 text-slate-400 border border-white/10'
                     }`}>
+                      {opt.isPrimary && <WindowsModernIcon className="w-2.5 h-2.5 text-[#0078D4]" />}
                       {opt.tag}
                     </span>
                     <span className="text-xs font-mono text-slate-400 font-semibold">{opt.size}</span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white mb-1">
-                    {opt.title}
+                  <h3 className="text-lg font-bold text-white mb-1 flex items-center gap-2">
+                    {opt.isPrimary && <WindowsModernIcon className="w-4 h-4 text-[#0078D4]" />}
+                    <span>{opt.title}</span>
                   </h3>
                   <div className="text-xs text-slate-400 mb-3">
                     {opt.subtitle}
@@ -81,13 +91,18 @@ export default function DownloadMatrix({ onToast }) {
                     rel={isExternal ? "noopener noreferrer" : undefined}
                     onClick={() => handleDownload(opt)}
                     className={`btn w-full btn-sm flex items-center justify-center gap-2 mb-3 cursor-pointer ${
-                      opt.isPrimary ? 'btn-primary shadow-lg shadow-blue-500/25' : 'btn-secondary'
+                      opt.isPrimary ? 'btn-primary shadow-lg shadow-blue-500/30 font-bold' : 'btn-secondary'
                     }`}
                   >
                     {isExternal ? (
                       <>
                         <ExternalLink className="w-4 h-4" />
                         <span>{opt.type}</span>
+                      </>
+                    ) : opt.isPrimary ? (
+                      <>
+                        <WindowsModernIcon className="w-4 h-4 text-white" />
+                        <span>Download Setup (.exe)</span>
                       </>
                     ) : (
                       <>
@@ -162,8 +177,8 @@ export default function DownloadMatrix({ onToast }) {
             <span>MIT Open Source</span>
           </div>
           <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-cyan-400" />
-            <span>Windows 10 & 11 (64-bit / ARM)</span>
+            <WindowsModernIcon className="w-4 h-4 text-[#0078D4]" />
+            <span>Windows 10 & 11 (64-bit)</span>
           </div>
         </div>
 

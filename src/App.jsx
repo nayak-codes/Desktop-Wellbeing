@@ -6,12 +6,15 @@ import FeaturesBento from './components/FeaturesBento';
 import InteractiveSimulator from './components/InteractiveSimulator';
 import HowItWorks from './components/HowItWorks';
 import DownloadMatrix from './components/DownloadMatrix';
+import CompanySection from './components/CompanySection';
 import Documentation from './components/Documentation';
 import AboutManifesto from './components/AboutManifesto';
+import PrivacyPolicyModal from './components/PrivacyPolicyModal';
 import Footer from './components/Footer';
 
 export default function App() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
   const [toasts, setToasts] = useState([]);
 
   const addToast = (message, type = 'info') => {
@@ -25,9 +28,12 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#090d16] text-slate-100 selection:bg-blue-500 selection:text-white relative overflow-x-hidden">
-      
+
       {/* Global Command Palette (⌘K) */}
       <CommandPalette isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+
+      {/* Global Privacy Policy & Legal Modal */}
+      <PrivacyPolicyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
 
       {/* Toast Notification Container */}
       <div className="toast-container" aria-live="polite">
@@ -47,7 +53,11 @@ export default function App() {
       </div>
 
       {/* Navigation Header */}
-      <Navbar onOpenSearch={() => setIsSearchOpen(true)} onToast={addToast} />
+      <Navbar 
+        onOpenSearch={() => setIsSearchOpen(true)} 
+        onToast={addToast}
+        onOpenPrivacy={() => setIsPrivacyOpen(true)}
+      />
 
       {/* Main Content Sections */}
       <main id="main-content">
@@ -56,12 +66,13 @@ export default function App() {
         <InteractiveSimulator onToast={addToast} />
         <HowItWorks />
         <DownloadMatrix onToast={addToast} />
+        <CompanySection />
         <Documentation />
         <AboutManifesto onToast={addToast} />
       </main>
 
       {/* Footer */}
-      <Footer onToast={addToast} />
+      <Footer onToast={addToast} onOpenPrivacy={() => setIsPrivacyOpen(true)} />
 
     </div>
   );
