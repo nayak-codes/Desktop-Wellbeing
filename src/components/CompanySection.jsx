@@ -4,7 +4,9 @@ import { COMPANY_NAME, COMPANY_URL, COMPANY_TAGLINE, APP_NAME } from '../data/re
 
 export default function CompanySection() {
   return (
-    <section id="company" className="section-padding bg-[#070b14] relative border-t border-white/10 overflow-hidden">
+    <section id="about" className="section-padding bg-[#070b14] relative border-t border-white/10 overflow-hidden">
+      {/* Anchor for #company */}
+      <div id="company" className="absolute -top-20"></div>
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
 

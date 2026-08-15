@@ -3,7 +3,7 @@ import { Download, Search, Menu, X } from 'lucide-react';
 import { APP_NAME, RELEASE_VERSION, DIRECT_EXE_DOWNLOAD_URL } from '../data/releaseData';
 import { WindowsModernIcon } from './Icons';
 
-export default function Navbar({ onOpenSearch, onToast }) {
+export default function Navbar({ onOpenSearch, onToast, onOpenPrivacy }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDownloadClick = () => {
@@ -36,7 +36,7 @@ export default function Navbar({ onOpenSearch, onToast }) {
         </a>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/5 px-3 py-1 rounded-full backdrop-blur-md">
+        <nav className="hidden lg:flex items-center gap-1 bg-white/[0.03] border border-white/5 px-3 py-1 rounded-full backdrop-blur-md">
           <a href="#features" className="px-3 py-1 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-full transition-all">
             Features
           </a>
@@ -49,6 +49,15 @@ export default function Navbar({ onOpenSearch, onToast }) {
           <a href="#download" className="px-3 py-1 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-full transition-all">
             Download
           </a>
+          <a href="#about" className="px-3 py-1 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-full transition-all">
+            About
+          </a>
+          <button 
+            onClick={onOpenPrivacy}
+            className="px-3 py-1 text-xs font-medium text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 rounded-full transition-all cursor-pointer"
+          >
+            Privacy Policy
+          </button>
           <a href="#faq" className="px-3 py-1 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-full transition-all">
             FAQ
           </a>
@@ -108,6 +117,13 @@ export default function Navbar({ onOpenSearch, onToast }) {
           <a href="#demo" onClick={() => setMobileOpen(false)} className="text-sm font-medium text-slate-200 py-1.5">Live Demo</a>
           <a href="#how-it-works" onClick={() => setMobileOpen(false)} className="text-sm font-medium text-slate-200 py-1.5">How It Works</a>
           <a href="#download" onClick={() => setMobileOpen(false)} className="text-sm font-medium text-slate-200 py-1.5">Download Matrix</a>
+          <a href="#about" onClick={() => setMobileOpen(false)} className="text-sm font-medium text-slate-200 py-1.5">About</a>
+          <button 
+            onClick={() => { setMobileOpen(false); if (onOpenPrivacy) onOpenPrivacy(); }} 
+            className="text-left text-sm font-medium text-blue-400 py-1.5 cursor-pointer"
+          >
+            Privacy Policy & License
+          </button>
           <a href="#faq" onClick={() => setMobileOpen(false)} className="text-sm font-medium text-slate-200 py-1.5">FAQ</a>
           <a
             href={DIRECT_EXE_DOWNLOAD_URL}
