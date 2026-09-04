@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Download, Search, Menu, X } from 'lucide-react';
-import { APP_NAME, RELEASE_VERSION, DIRECT_EXE_DOWNLOAD_URL } from '../data/releaseData';
+import { APP_NAME, RELEASE_VERSION, DIRECT_EXE_DOWNLOAD_URL, EXE_FILENAME } from '../data/releaseData';
 import { WindowsModernIcon } from './Icons';
 
 export default function Navbar({ onOpenSearch, onToast, onOpenPrivacy }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDownloadClick = () => {
-    if (onToast) onToast("Starting download for Desktop.Wellbeing.Setup.1.0.0.exe...", "success");
+    if (onToast) onToast(`Starting download for ${EXE_FILENAME}...`, "success");
   };
 
   return (
@@ -92,7 +92,7 @@ export default function Navbar({ onOpenSearch, onToast, onOpenPrivacy }) {
           {/* Primary CTA */}
           <a
             href={DIRECT_EXE_DOWNLOAD_URL}
-            download="Desktop.Wellbeing.Setup.1.0.0.exe"
+            download={EXE_FILENAME}
             onClick={handleDownloadClick}
             className="btn btn-primary btn-sm flex items-center gap-2 text-xs font-semibold cursor-pointer shadow-md shadow-blue-500/20"
           >
@@ -127,12 +127,12 @@ export default function Navbar({ onOpenSearch, onToast, onOpenPrivacy }) {
           <a href="#faq" onClick={() => setMobileOpen(false)} className="text-sm font-medium text-slate-200 py-1.5">FAQ</a>
           <a
             href={DIRECT_EXE_DOWNLOAD_URL}
-            download="Desktop.Wellbeing.Setup.1.0.0.exe"
+            download={EXE_FILENAME}
             onClick={() => { setMobileOpen(false); handleDownloadClick(); }}
             className="btn btn-primary btn-sm flex items-center justify-center gap-2 mt-2"
           >
             <WindowsModernIcon className="w-4 h-4" />
-            <span>Download .exe (v1.0.0)</span>
+            <span>Download .exe ({RELEASE_VERSION})</span>
           </a>
         </div>
       )}

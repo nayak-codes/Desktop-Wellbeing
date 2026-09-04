@@ -1,6 +1,6 @@
 import React from 'react';
 import { Shield, Sparkles, Download, CheckCircle2, ArrowRight } from 'lucide-react';
-import { APP_NAME, RELEASE_VERSION, DIRECT_EXE_DOWNLOAD_URL } from '../data/releaseData';
+import { APP_NAME, RELEASE_VERSION, DIRECT_EXE_DOWNLOAD_URL, EXE_FILENAME } from '../data/releaseData';
 import { WindowsModernIcon } from './Icons';
 
 export default function AboutManifesto({ onToast }) {
@@ -47,9 +47,9 @@ export default function AboutManifesto({ onToast }) {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a
               href={DIRECT_EXE_DOWNLOAD_URL}
-              download="Desktop.Wellbeing.Setup.1.0.0.exe"
+              download={EXE_FILENAME}
               onClick={() => {
-                if (onToast) onToast("Starting download for Desktop.Wellbeing.Setup.1.0.0.exe...", "success");
+                if (onToast) onToast(`Starting download for ${EXE_FILENAME}...`, "success");
               }}
               className="btn btn-primary btn-lg flex items-center gap-3 shadow-xl shadow-blue-500/30 cursor-pointer font-bold"
             >

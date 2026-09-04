@@ -81,7 +81,7 @@ export default function InteractiveSimulator({ onToast }) {
 
   const handleExportJSON = () => {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({
-      version: "1.0.0",
+      version: RELEASE_VERSION,
       totalScreenTimeSeconds: totalSeconds,
       score: 40,
       apps: apps,
@@ -131,7 +131,7 @@ export default function InteractiveSimulator({ onToast }) {
               <img src="/logo.png" alt="Logo" className="w-4 h-4 rounded object-cover shadow" />
               <span className="text-xs font-bold tracking-tight text-white flex items-center gap-1.5">
                 <span>{APP_NAME}</span>
-                <span className="text-[10px] text-slate-400 font-mono font-normal">v1.0.0</span>
+                <span className="text-[10px] text-slate-400 font-mono font-normal">{RELEASE_VERSION}</span>
               </span>
             </div>
 

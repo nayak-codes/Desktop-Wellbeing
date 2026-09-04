@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Download, Play, Pause, Check, Copy, Shield, Sparkles, Clock, Lock, ArrowRight, Terminal } from 'lucide-react';
-import { APP_NAME, RELEASE_VERSION, CLI_INSTALL_COMMAND, DIRECT_EXE_DOWNLOAD_URL, GITHUB_RELEASE_URL } from '../data/releaseData';
+import { APP_NAME, RELEASE_VERSION, CLI_INSTALL_COMMAND, DIRECT_EXE_DOWNLOAD_URL, GITHUB_RELEASE_URL, EXE_FILENAME } from '../data/releaseData';
 import { WindowsModernIcon } from './Icons';
 
 export default function Hero({ onToast }) {
@@ -21,7 +21,7 @@ export default function Hero({ onToast }) {
 
   const cliCommands = {
     winget: "winget install nayak-codes.DesktopWellbeing",
-    powershell: `irm "${DIRECT_EXE_DOWNLOAD_URL}" -OutFile DesktopWellbeing.exe`,
+    powershell: `irm "${DIRECT_EXE_DOWNLOAD_URL}" -OutFile "${EXE_FILENAME}"`,
     curl: `curl -L -O "${DIRECT_EXE_DOWNLOAD_URL}"`
   };
 
@@ -60,7 +60,7 @@ export default function Hero({ onToast }) {
           <span className="text-slate-500">•</span>
           <span className="text-emerald-400 font-semibold flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            Official Release
+            Official Release v2
           </span>
         </div>
 
@@ -79,9 +79,9 @@ export default function Hero({ onToast }) {
         <div className="flex flex-wrap items-center justify-center gap-4 mb-3">
           <a
             href={DIRECT_EXE_DOWNLOAD_URL}
-            download="Desktop.Wellbeing.Setup.1.0.0.exe"
+            download={EXE_FILENAME}
             onClick={() => {
-              if (onToast) onToast("Starting download for Desktop.Wellbeing.Setup.1.0.0.exe...", "success");
+              if (onToast) onToast(`Starting download for ${EXE_FILENAME}...`, "success");
             }}
             className="btn btn-primary btn-lg flex items-center gap-3 shadow-xl shadow-blue-600/30 cursor-pointer group"
           >
@@ -106,7 +106,7 @@ export default function Hero({ onToast }) {
             Windows 11 & 10 (64-bit)
           </span>
           <span className="text-slate-600">•</span>
-          <span>v1.0.0 (158 MB)</span>
+          <span>{RELEASE_VERSION} (159 MB)</span>
           <span className="text-slate-600">•</span>
           <a href="#download" className="text-blue-400 hover:text-blue-300 underline underline-offset-4">
             Release Hub & Checksums
@@ -155,7 +155,7 @@ export default function Hero({ onToast }) {
             <div className="flex items-center gap-2.5">
               <img src="/logo.png" alt="Logo" className="w-4 h-4 rounded object-cover shadow" />
               <span className="text-xs text-white font-bold font-sans">
-                {APP_NAME} <span className="text-[10px] text-slate-400 font-mono font-normal ml-1">v1.0.0</span>
+                {APP_NAME} <span className="text-[10px] text-slate-400 font-mono font-normal ml-1">{RELEASE_VERSION}</span>
               </span>
             </div>
 

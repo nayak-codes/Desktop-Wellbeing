@@ -1,52 +1,53 @@
 export const APP_NAME = "Desktop Wellbeing";
-export const RELEASE_VERSION = "v1.0.0";
-export const RELEASE_TAG = "v1";
-export const RELEASE_DATE = "August 2026";
+export const RELEASE_VERSION = "v1.0.1";
+export const RELEASE_TAG = "v2";
+export const RELEASE_DATE = "September 2026";
+export const EXE_FILENAME = "Desktop.Wellbeing.Setup.1.0.1.exe";
 export const COMPANY_NAME = "Balanju Solutions";
 export const COMPANY_URL = "https://balanju-solutions.vercel.app";
 export const COMPANY_TAGLINE = "We Build. We Serve. We Deliver.";
 export const GITHUB_REPO = "https://github.com/nayak-codes/Desktop-Wellbeing";
-export const GITHUB_RELEASE_URL = "https://github.com/nayak-codes/Desktop-Wellbeing/releases/tag/v1";
-export const DIRECT_EXE_DOWNLOAD_URL = "https://github.com/nayak-codes/Desktop-Wellbeing/releases/download/v1/Desktop.Wellbeing.Setup.1.0.0.exe";
-export const DIRECT_ZIP_DOWNLOAD_URL = "https://github.com/nayak-codes/Desktop-Wellbeing/archive/refs/tags/v1.zip";
+export const GITHUB_RELEASE_URL = "https://github.com/nayak-codes/Desktop-Wellbeing/releases/tag/v2";
+export const DIRECT_EXE_DOWNLOAD_URL = "https://github.com/nayak-codes/Desktop-Wellbeing/releases/download/v2/Desktop.Wellbeing.Setup.1.0.1.exe";
+export const DIRECT_ZIP_DOWNLOAD_URL = "https://github.com/nayak-codes/Desktop-Wellbeing/archive/refs/tags/v2.zip";
 
 export const DOWNLOAD_OPTIONS = [
   {
     id: "installer",
     title: "Windows Setup (.exe)",
     subtitle: "Official Windows 10 & 11 Installer",
-    filename: "Desktop.Wellbeing.Setup.1.0.0.exe",
-    size: "158 MB",
+    filename: EXE_FILENAME,
+    size: "159 MB",
     type: "Installer (.exe)",
-    tag: "Official Release",
+    tag: "Official Release (v2)",
     url: DIRECT_EXE_DOWNLOAD_URL,
-    sha256: "bf4159a3b5ee43403f37604fc0aafb23e80c85c074df3bfa4726f1c4225d3",
+    sha256: "61aa34bf8916baa989578e67e8bd6576e33044e1f744e7c75628b082fa3240fb",
     desc: "Complete standalone Windows setup installer with background tracker, system startup, and auto system-tray dashboard.",
     isPrimary: true
   },
   {
     id: "github-release",
-    title: "GitHub Release Hub (v1)",
+    title: "GitHub Release Hub (v2)",
     subtitle: "View Release Notes & Assets",
-    filename: "releases/tag/v1",
+    filename: "releases/tag/v2",
     size: "Official Hub",
     type: "GitHub Release",
-    tag: "Latest Tag",
+    tag: "Latest Tag v2",
     url: GITHUB_RELEASE_URL,
-    sha256: "bf4159a3b5ee43403f37604fc0aaf...",
-    desc: "Direct access to the official GitHub Release v1 page with release notes, commit verification, and binary downloads.",
+    sha256: "61aa34bf8916baa989578e67e8bd6576e33044e1f744e7c75628b082fa3240fb",
+    desc: "Direct access to the official GitHub Release v2 page with release notes, commit verification, and binary downloads.",
     isPrimary: false
   },
   {
     id: "source-zip",
     title: "Source Code Archive (.zip)",
     subtitle: "Full React + Electron Source",
-    filename: "Desktop-Wellbeing-v1.zip",
+    filename: "Desktop-Wellbeing-v2.zip",
     size: "Source Package",
     type: "Source (.zip)",
     tag: "MIT Open Source",
     url: DIRECT_ZIP_DOWNLOAD_URL,
-    sha256: "bf4159a3b5ee43403f37604fc0aaf...",
+    sha256: "61aa34bf8916baa989578e67e8bd6576e33044e1f744e7c75628b082fa3240fb",
     desc: "Download the complete audited source archive. Inspect code or build locally with Node.js and Electron.",
     isPrimary: false
   }
@@ -55,7 +56,7 @@ export const DOWNLOAD_OPTIONS = [
 export const CLI_COMMANDS = {
   powershell: {
     title: "PowerShell Direct Download & Install",
-    cmd: `Invoke-WebRequest -Uri "${DIRECT_EXE_DOWNLOAD_URL}" -OutFile "Desktop.Wellbeing.Setup.1.0.0.exe"; .\\Desktop.Wellbeing.Setup.1.0.0.exe`
+    cmd: `Invoke-WebRequest -Uri "${DIRECT_EXE_DOWNLOAD_URL}" -OutFile "${EXE_FILENAME}"; .\\${EXE_FILENAME}`
   },
   curl: {
     title: "cURL Download",
