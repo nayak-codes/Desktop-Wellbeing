@@ -1,15 +1,15 @@
 export const APP_NAME = "Desktop Wellbeing";
-export const RELEASE_VERSION = "v1.0.1";
-export const RELEASE_TAG = "v2";
+export const RELEASE_VERSION = "v1.0.4";
+export const RELEASE_TAG = "v4";
 export const RELEASE_DATE = "September 2026";
-export const EXE_FILENAME = "Desktop.Wellbeing.Setup.1.0.1.exe";
+export const EXE_FILENAME = "Desktop.Wellbeing.Setup.1.0.0.exe";
 export const COMPANY_NAME = "Balanju Solutions";
 export const COMPANY_URL = "https://balanju-solutions.vercel.app";
 export const COMPANY_TAGLINE = "We Build. We Serve. We Deliver.";
 export const GITHUB_REPO = "https://github.com/nayak-codes/Desktop-Wellbeing";
-export const GITHUB_RELEASE_URL = "https://github.com/nayak-codes/Desktop-Wellbeing/releases/tag/v2";
-export const DIRECT_EXE_DOWNLOAD_URL = "https://github.com/nayak-codes/Desktop-Wellbeing/releases/download/v2/Desktop.Wellbeing.Setup.1.0.1.exe";
-export const DIRECT_ZIP_DOWNLOAD_URL = "https://github.com/nayak-codes/Desktop-Wellbeing/archive/refs/tags/v2.zip";
+export const GITHUB_RELEASE_URL = "https://github.com/nayak-codes/Desktop-Wellbeing/releases/tag/v4";
+export const DIRECT_EXE_DOWNLOAD_URL = "https://github.com/nayak-codes/Desktop-Wellbeing/releases/download/v4/Desktop.Wellbeing.Setup.1.0.0.exe";
+export const DIRECT_ZIP_DOWNLOAD_URL = "https://github.com/nayak-codes/Desktop-Wellbeing/archive/refs/tags/v4.zip";
 
 export const DOWNLOAD_OPTIONS = [
   {
@@ -17,37 +17,37 @@ export const DOWNLOAD_OPTIONS = [
     title: "Windows Setup (.exe)",
     subtitle: "Official Windows 10 & 11 Installer",
     filename: EXE_FILENAME,
-    size: "159 MB",
+    size: "77.9 MB",
     type: "Installer (.exe)",
-    tag: "Official Release (v2)",
+    tag: "Official Release (v4)",
     url: DIRECT_EXE_DOWNLOAD_URL,
-    sha256: "61aa34bf8916baa989578e67e8bd6576e33044e1f744e7c75628b082fa3240fb",
+    sha256: "5c774d51d72aa526d18bf6a4c92f6...",
     desc: "Complete standalone Windows setup installer with background tracker, system startup, and auto system-tray dashboard.",
     isPrimary: true
   },
   {
     id: "github-release",
-    title: "GitHub Release Hub (v2)",
+    title: "GitHub Release Hub (v4)",
     subtitle: "View Release Notes & Assets",
-    filename: "releases/tag/v2",
+    filename: "releases/tag/v4",
     size: "Official Hub",
     type: "GitHub Release",
-    tag: "Latest Tag v2",
+    tag: "Latest Tag v4",
     url: GITHUB_RELEASE_URL,
-    sha256: "61aa34bf8916baa989578e67e8bd6576e33044e1f744e7c75628b082fa3240fb",
-    desc: "Direct access to the official GitHub Release v2 page with release notes, commit verification, and binary downloads.",
+    sha256: "5c774d51d72aa526d18bf6a4c92f6...",
+    desc: "Direct access to the official GitHub Release v4 page with release notes, commit verification, and binary downloads.",
     isPrimary: false
   },
   {
     id: "source-zip",
     title: "Source Code Archive (.zip)",
     subtitle: "Full React + Electron Source",
-    filename: "Desktop-Wellbeing-v2.zip",
+    filename: "Desktop-Wellbeing-v4.zip",
     size: "Source Package",
     type: "Source (.zip)",
     tag: "MIT Open Source",
     url: DIRECT_ZIP_DOWNLOAD_URL,
-    sha256: "61aa34bf8916baa989578e67e8bd6576e33044e1f744e7c75628b082fa3240fb",
+    sha256: "5c774d51d72aa526d18bf6a4c92f6...",
     desc: "Download the complete audited source archive. Inspect code or build locally with Node.js and Electron.",
     isPrimary: false
   }
@@ -94,6 +94,6 @@ export const FAQS = [
   {
     category: "Installation",
     q: "Why does Windows SmartScreen appear on first launch?",
-    a: "As an independent open-source release, new versions need time to accumulate Microsoft certificate reputation points. Simply click 'More info' and 'Run anyway' to launch. The complete source code is audited and publicly accessible on GitHub."
+    a: "This is completely normal for independent open-source apps that haven't yet built up Microsoft SmartScreen certificate reputation. To install: (1) In the SmartScreen dialog, click 'More info' — a hidden link at the bottom of the warning. (2) A 'Run anyway' button will appear — click it. The installer then launches normally. Our full source code is publicly audited on GitHub, and the binary is verified clean on VirusTotal for complete peace of mind."
   }
 ];

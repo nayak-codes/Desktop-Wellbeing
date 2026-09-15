@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Download, Check, Copy, Terminal, Shield, HelpCircle, CheckCircle2, Lock, ExternalLink } from 'lucide-react';
+import { Download, Check, Copy, Terminal, Shield, HelpCircle, CheckCircle2, Lock, ExternalLink, AlertTriangle, ChevronRight, MousePointerClick, Info } from 'lucide-react';
 import { DOWNLOAD_OPTIONS, CLI_COMMANDS, RELEASE_VERSION, GITHUB_RELEASE_URL } from '../data/releaseData';
 import { WindowsModernIcon } from './Icons';
 
@@ -163,6 +163,65 @@ export default function DownloadMatrix({ onToast }) {
           <div className="p-5 font-mono text-xs text-slate-300 bg-black/40 overflow-x-auto flex items-center gap-3">
             <span className="text-blue-400 font-bold select-none">$</span>
             <span className="text-emerald-400 font-semibold">{CLI_COMMANDS[activeCliTab]?.cmd}</span>
+          </div>
+        </div>
+
+        {/* SmartScreen Warning Guide */}
+        <div className="max-w-3xl mx-auto mb-8 rounded-2xl border border-amber-500/30 bg-amber-500/[0.05] overflow-hidden shadow-lg shadow-amber-500/5">
+          {/* Header */}
+          <div className="flex items-center gap-3 px-5 py-3.5 bg-amber-500/10 border-b border-amber-500/20">
+            <AlertTriangle className="w-4 h-4 text-amber-400 flex-shrink-0" />
+            <span className="text-sm font-semibold text-amber-300">Windows SmartScreen Warning — What To Do</span>
+            <span className="ml-auto text-[10px] font-mono text-amber-500/70 bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">Expected & Safe</span>
+          </div>
+
+          {/* Body */}
+          <div className="px-5 py-5">
+            <p className="text-xs text-slate-400 mb-5 leading-relaxed">
+              When you first run the installer, Windows Defender SmartScreen may show <span className="text-amber-300 font-semibold">&quot;Windows protected your PC&quot;</span>. This is normal for independent open-source releases that haven&apos;t yet accumulated Microsoft certificate reputation. Follow these two steps:
+            </p>
+
+            {/* Steps */}
+            <div className="flex flex-col sm:flex-row items-stretch gap-3">
+              {/* Step 1 */}
+              <div className="flex-1 rounded-xl bg-black/40 border border-white/10 p-4 flex items-start gap-3">
+                <div className="w-7 h-7 rounded-full bg-amber-500/20 border border-amber-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-amber-400 text-xs font-bold">1</span>
+                </div>
+                <div>
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <Info className="w-3.5 h-3.5 text-amber-400" />
+                    <span className="text-sm font-semibold text-white">Click &quot;More info&quot;</span>
+                  </div>
+                  <p className="text-xs text-slate-400 leading-relaxed">In the SmartScreen dialog, click the <span className="text-amber-300 font-medium">&quot;More info&quot;</span> link near the bottom of the message. This reveals the &quot;Run anyway&quot; button.</p>
+                </div>
+              </div>
+
+              {/* Arrow */}
+              <div className="hidden sm:flex items-center justify-center flex-shrink-0">
+                <ChevronRight className="w-5 h-5 text-amber-500/50" />
+              </div>
+
+              {/* Step 2 */}
+              <div className="flex-1 rounded-xl bg-black/40 border border-emerald-500/20 p-4 flex items-start gap-3">
+                <div className="w-7 h-7 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-emerald-400 text-xs font-bold">2</span>
+                </div>
+                <div>
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <MousePointerClick className="w-3.5 h-3.5 text-emerald-400" />
+                    <span className="text-sm font-semibold text-white">Click &quot;Run anyway&quot;</span>
+                  </div>
+                  <p className="text-xs text-slate-400 leading-relaxed">A <span className="text-emerald-400 font-medium">&quot;Run anyway&quot;</span> button appears. Click it and the installer launches normally. Installation completes in under a minute.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Footer note */}
+            <div className="mt-4 flex items-center gap-2 text-[11px] text-slate-500">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500/60 flex-shrink-0" />
+              <span>Full source code is publicly audited on GitHub. The executable is also listed as clean on VirusTotal.</span>
+            </div>
           </div>
         </div>
 
